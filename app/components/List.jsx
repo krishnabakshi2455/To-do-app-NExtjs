@@ -1,0 +1,36 @@
+"use client";
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+const TableComponent = () => {
+  const listdata = useSelector((state) => state.ADDTASKS.MYTASKS);
+
+  console.log(`redux data ${listdata}, its length ${listdata.length} typeof listdata ${typeof (listdata)}`);
+
+  return (
+    <table className="styled-table">
+      <thead>
+        <tr>
+          <th>ALL TODOS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {listdata && listdata.length > 0 ? (
+          listdata.map((item, index) => (
+            <tr key={index}>
+              <td>{item}</td>
+              <td><button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Edit</button></td>
+              <td><button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>Delete</button></td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="1">NO TODOS</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  );
+};
+
+export default TableComponent;
