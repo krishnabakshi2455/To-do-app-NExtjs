@@ -27,13 +27,14 @@ const Input = () => {
         <div className='h-16 m-10 flex justify-center items-center gap-4'>
             <input
                 type="text"
-                className='border-black border-1 w-1/2 h-10'
+                className='border-black border-2 rounded w-1/2 h-10'
                 placeholder='Enter Your Tasks'
                 onChange={inputhandle}
             />
             <button
                 className='bg-blue-500 hover:bg-blue-700 text-white p-2 rounded'
                 onClick={submitdata}
+
             >
                 Add TODO
             </button>

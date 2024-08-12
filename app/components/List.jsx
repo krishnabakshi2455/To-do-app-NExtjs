@@ -1,12 +1,11 @@
 "use client";
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { removetask } from '../redux/slice';
 
 const TableComponent = () => {
   const listdata = useSelector((state) => state.ADDTASKS.MYTASKS);
-
-  console.log(`redux data ${listdata}, its length ${listdata.length} typeof listdata ${typeof (listdata)}`);
-
+  const dispatch = useDispatch()
   return (
     <table className="styled-table">
       <thead>
@@ -20,7 +19,7 @@ const TableComponent = () => {
             <tr key={index}>
               <td>{item}</td>
               <td><button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Edit</button></td>
-              <td><button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'>Delete</button></td>
+              <td><button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' onClick={() => dispatch(removetask(index,item))}>Delete</button></td>
             </tr>
           ))
         ) : (
